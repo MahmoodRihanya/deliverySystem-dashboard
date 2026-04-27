@@ -96,7 +96,7 @@ class _DashboardStatsViewState extends State<DashboardStatsView> {
               Expanded(
                 child: _buildStatCard(
                   'إجمالي الإيرادات',
-                  '${stats!['revenue']?['total'] ?? 0} \$',
+                  '${stats!['revenue']?['total'] ?? 0} ل.س',
                   Icons.attach_money,
                   Colors.purple,
                 ),

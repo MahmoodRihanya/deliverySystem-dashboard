@@ -91,7 +91,7 @@ class _OrdersListViewState extends State<OrdersListView> {
                                   child: (order['restaurant']?['logo_url'] == null) ? const Icon(Icons.restaurant, color: AppColors.primary) : null,
                                 ),
                                 title: Text('طلب #${order['order_id']} - ${order['restaurant']?['restaurant_name'] ?? ''}', style: const TextStyle(fontWeight: FontWeight.bold)),
-                              subtitle: Text('العميل: ${order['user']?['full_name'] ?? '-'} | الإجمالي: ${order['total_amount']?.toString() ?? '0'} \$'),
+                              subtitle: Text('العميل: ${order['user']?['full_name'] ?? '-'} | الإجمالي: ${order['total_amount']?.toString() ?? '0'} ل.س'),
                               trailing: Container(
                                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                                 decoration: BoxDecoration(
