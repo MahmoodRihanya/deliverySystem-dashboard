@@ -91,7 +91,33 @@ class _OrdersListViewState extends State<OrdersListView> {
                                   child: (order['restaurant']?['logo_url'] == null) ? const Icon(Icons.restaurant, color: AppColors.primary) : null,
                                 ),
                                 title: Text('طلب #${order['order_id']} - ${order['restaurant']?['restaurant_name'] ?? ''}', style: const TextStyle(fontWeight: FontWeight.bold)),
-                              subtitle: Text('العميل: ${order['user']?['full_name'] ?? '-'} | الإجمالي: ${order['total_amount']?.toString() ?? '0'} ل.س'),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('العميل: ${order['user']?['full_name'] ?? '-'} | الإجمالي: ${order['total_amount']?.toString() ?? '0'} ل.س'),
+                                  if (order['driver'] != null)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8),
+                                      child: Row(
+                                        children: [
+                                          CircleAvatar(
+                                            radius: 12,
+                                            backgroundColor: AppColors.pink.withOpacity(0.5),
+                                            backgroundImage: (order['driver']['profile_image'] != null)
+                                                ? NetworkImage(ImageHelper.buildImageUrl(order['driver']['profile_image'])!)
+                                                : null,
+                                            child: (order['driver']['profile_image'] == null) ? const Icon(Icons.person, size: 14, color: AppColors.primary) : null,
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Text(
+                                            'السائق: ${order['driver']['full_name']}',
+                                            style: const TextStyle(fontSize: 13, color: Colors.blueGrey, fontWeight: FontWeight.w500),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                ],
+                              ),
                               trailing: Container(
                                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                                 decoration: BoxDecoration(

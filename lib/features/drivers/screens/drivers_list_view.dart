@@ -102,13 +102,13 @@ class _DriversListViewState extends State<DriversListView> {
                               contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
                               leading: CircleAvatar(
                                 backgroundColor: AppColors.pink,
-                                backgroundImage: (driver['user']?['profile_image'] != null)
-                                    ? NetworkImage(ImageHelper.buildImageUrl(driver['user']['profile_image'])!)
+                                backgroundImage: (driver['profile_image'] != null)
+                                    ? NetworkImage(ImageHelper.buildImageUrl(driver['profile_image'])!)
                                     : null,
-                                child: (driver['user']?['profile_image'] == null) ? const Icon(Icons.person, color: AppColors.primary) : null,
+                                child: (driver['profile_image'] == null) ? const Icon(Icons.person, color: AppColors.primary) : null,
                               ),
-                              title: Text(driver['user']?['full_name'] ?? 'السائق #${driver['driver_id']}', style: const TextStyle(fontWeight: FontWeight.bold)),
-                              subtitle: Text('رقم الهاتف: ${driver['user']?['phone'] ?? '-'} | المركبة: ${driver['vehicle_type'] ?? '-'}'),
+                              title: Text(driver['full_name'] ?? 'السائق #${driver['driver_id']}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                              subtitle: Text('رقم الهاتف: ${driver['phone'] ?? '-'} | المركبة: ${driver['vehicle_type'] ?? '-'}'),
                               trailing: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
